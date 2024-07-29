@@ -8,7 +8,14 @@
 ---
 
 ### 👨‍💻 Get Latest Airdrops & Update:
-- [Join Telegram Here](https://t.me/hiddengemnews)
+<div align="left">
+  <a href="https://t.me/hiddengemnews" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=Join%20Telegram&logo=telegram&label=&color=2CA5E0&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="telegram logo"  />
+  </a>
+  <a href="https://x.com/0xAiExp" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=Follow%20Twitter&logo=twitter&label=&color=1DA1F2&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="twitter logo"  />
+  </a>
+</div>
 
 ---
 
@@ -31,3 +38,16 @@ Other Tools:
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=bidyutroy2&show_icons=true&theme=algolia" alt="dante4rt's GitHub Stats"/>
 </p>
+
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=bidyutroy2&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false&order=1" height="150" alt="stats graph"  />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=bidyutroy2&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false&order=2" height="150" alt="languages graph"  />
+</div>
+
+
+
+###
+
+<br clear="both">
+
+<img src="https://raw.githubusercontent.com/bidyutroy2/bidyutroy2/output/snake.svg" alt="Snake animation" />
