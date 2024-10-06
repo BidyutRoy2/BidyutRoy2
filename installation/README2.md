@@ -14,3 +14,13 @@ source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/
 ```bash
 source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/foundry.sh)
 ```
+
+## Docker & Compose
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker.sh)
+```
+
+## Upgrade Latest Version Docker & Compose
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker-upgrade.sh)
+```
