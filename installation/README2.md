@@ -55,6 +55,11 @@ source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/
 
 ---------------------------------------------------------------------------------------------------------------------------
 
+### Install Packages
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/Package.sh)
+```
+
 
 # ▄︻デ𝙂𝙚𝙩 𝙇𝙖𝙩𝙚𝙨𝙩 𝘼𝙞𝙧𝙙𝙧𝙤𝙥𝙨 & 𝙐𝙥𝙙𝙖𝙩𝙚𝙨═━一
 
