@@ -151,6 +151,7 @@ menu() {
     echo -e "${YELLOW}│              2) Input required details              │${NORMAL}"
     echo -e "${YELLOW}│              3) Deploy contract(s)                  │${NORMAL}"
     echo -e "${YELLOW}│              4) Exit                                │${NORMAL}"
+    echo -e "${YELLOW}│             https://t.me/hiddengemnews              │${NORMAL}"
     echo -e "${YELLOW}└─────────────────────────────────────────────────────┘${NORMAL}"
 
     read -p "Enter your choice: " CHOICE
