@@ -8,7 +8,7 @@
   - You can find your EVM chain RPC url on [Chainlist](https://chainlist.org)
 - Need to have terminal which support linux based command
    - You can use either local terminal (Ubuntu)
-   - Or you can use Virtual IDE like [codespaces](https://github.com/codespaces)
+   - Or you can use Virtual IDE like [codespaces](https://github.com/codespaces) or Open WSL Terminal
  
 ## Unique Features
 - **Batch Deployment:** Supports deploying multiple token contracts with optional random prefixes for token names (If you want to deploy 5 tokens, then it will ask u the token name 1 time, and then automatically add random 2 prefixes at the before of the name)
