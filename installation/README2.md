@@ -1,7 +1,7 @@
 ## If not installed use install command and if already installed use Upgrade command
 
 -------------------------------------------------------------------------------------------------------------------------
-### Installs git, curl, wget AND checks their versions after instal
+### Installs git, curl, wget AND checks their versions after install
 ```
 sudo apt update && sudo apt install -y git curl wget && echo -e "\n=== INSTALLED VERSIONS ===" && git --version && curl --version | head -n 1 && wget --version | head -n 1
 ```
