@@ -26,3 +26,40 @@ sudo bash /media/$USER/VBox_GAs_*/VBoxLinuxAdditions.run
 ```
 sudo reboot
 ```
+## If not installed use install command For (Git, Curl, Wget, Node , NPM , Docker & More Packages)
+
+-------------------------------------------------------------------------------------------------------------------------
+### Installs git, curl, wget AND checks their versions after install
+```
+sudo apt update && sudo apt install -y git curl wget && echo -e "\n=== INSTALLED VERSIONS ===" && git --version && curl --version | head -n 1 && wget --version | head -n 1
+```
+---------------------------------------------------------------------------------------------------------------------------
+### Install Packages
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/Package.sh)
+```
+---------------------------------------------------------------------------------------------------------------------------
+### Install Node js and npm
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/node.sh)
+```
+### Upgrade Latest Version Node js and npm
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/upgrade-node.sh)
+```
+
+### Check Version `node -v` & `npm -v`
+
+-------------------------------------------------------------------------------------------------------------------------
+### Install Docker & Compose
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker.sh)
+```
+
+### Upgrade Latest Version Docker & Compose
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker-upgrade.sh)
+```
+### Check Version `docker --version` & `docker-compose --version`
+
+---------------------------------------------------------------------------------------------------------------------------
