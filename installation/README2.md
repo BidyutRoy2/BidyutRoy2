@@ -6,12 +6,15 @@
 sudo apt update && sudo apt install -y git curl wget && echo -e "\n=== INSTALLED VERSIONS ===" && git --version && curl --version | head -n 1 && wget --version | head -n 1
 ```
 ---------------------------------------------------------------------------------------------------------------------------
-
+### Install Packages
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/Package.sh)
+```
+---------------------------------------------------------------------------------------------------------------------------
 ### Install Node js and npm
 ```bash
 source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/node.sh)
 ```
-
 ### Upgrade Latest Version Node js and npm
 ```bash
 source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/upgrade-node.sh)
@@ -59,11 +62,6 @@ source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/
 ### Check Version `forge --version`
 
 ---------------------------------------------------------------------------------------------------------------------------
-
-### Install Packages
-```bash
-source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/Package.sh)
-```
 
 
 # ▄︻デ𝙂𝙚𝙩 𝙇𝙖𝙩𝙚𝙨𝙩 𝘼𝙞𝙧𝙙𝙧𝙤𝙥𝙨 & 𝙐𝙥𝙙𝙖𝙩𝙚𝙨═━一
