@@ -1,17 +1,10 @@
 ## If not installed use install command and if already installed use Upgrade command
 
 -------------------------------------------------------------------------------------------------------------------------
-### Install Docker & Compose
-```bash
-source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker.sh)
+### Installs git, curl, wget AND checks their versions after instal
 ```
-
-### Upgrade Latest Version Docker & Compose
-```bash
-source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker-upgrade.sh)
+sudo apt update && sudo apt install -y git curl wget && echo -e "\n=== INSTALLED VERSIONS ===" && git --version && curl --version | head -n 1 && wget --version | head -n 1
 ```
-### Check Version `docker --version` & `docker-compose --version`
-
 ---------------------------------------------------------------------------------------------------------------------------
 
 ### Install Node js and npm
@@ -25,6 +18,18 @@ source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/
 ```
 
 ### Check Version `node -v` & `npm -v`
+
+-------------------------------------------------------------------------------------------------------------------------
+### Install Docker & Compose
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker.sh)
+```
+
+### Upgrade Latest Version Docker & Compose
+```bash
+source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker-upgrade.sh)
+```
+### Check Version `docker --version` & `docker-compose --version`
 
 ---------------------------------------------------------------------------------------------------------------------------
 
