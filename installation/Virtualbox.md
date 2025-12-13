@@ -1,4 +1,9 @@
 ## VIRTUALBOX SETTINGS — UBUNTU (24/7 STABLE)
+
+<details>
+<summary><strong>Ubuntu Setup Guide(Click to Expand)</strong></summary>
+<br>
+  
 -----
 ### GENERAL
 - Name            : HiddenGem
@@ -63,6 +68,7 @@
 - RESULT
 - Uptime              : 24/7 Stable
 - Recommended For     : Nodes, Bots, Server
+</details>
 -------------------------------------------------------------------------------------------------------------------------
 
 ### Enable Clipboard & Drag-Drop (VirtualBox Settings)
