@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# ================= SAFE MODE =================
 set -o pipefail
 
 error_exit() {
@@ -14,15 +15,12 @@ echo "[!] Logo load failed (ignored)"
 echo "-----------------------------------------------------------------------------"
 sleep 2
 
-# ================= WORK DIRECTORY =================
-BASE_DIR="$HOME/proxy_auto_collector"
+# ================= BASE DIRECTORY (CURRENT FOLDER) =================
+BASE_DIR="$(pwd)"
 TARGET_DIR="proxy-auto-collector"
 REPO_URL="https://github.com/BidyutRoy2/BidyutRoy2.git"
 
-mkdir -p "$BASE_DIR"
-cd "$BASE_DIR" || error_exit "Cannot access $BASE_DIR"
-
-echo "[✓] Working directory: $BASE_DIR"
+echo "[✓] Base directory: $BASE_DIR"
 
 # ================= HELPERS =================
 command_exists() {
@@ -70,9 +68,7 @@ INSTALL_GO=false
 
 if command_exists go; then
   GO_CURRENT=$(go version | awk '{print $3}' | sed 's/go//')
-  if [ "$GO_CURRENT" != "$GO_VERSION_REQUIRED" ]; then
-    INSTALL_GO=true
-  fi
+  [ "$GO_CURRENT" != "$GO_VERSION_REQUIRED" ] && INSTALL_GO=true
 else
   INSTALL_GO=true
 fi
@@ -108,14 +104,12 @@ npm --version
 go version
 echo "=========================================="
 
-# ================= COPY proxy-auto-collector =================
-echo "[+] Copying proxy-auto-collector folder..."
+# ================= DOWNLOAD proxy-auto-collector (CORRECT) =================
+echo "[+] Downloading proxy-auto-collector folder..."
 
 rm -rf "$TARGET_DIR"
 
-git init -q "$TARGET_DIR"
-cd "$TARGET_DIR" || error_exit "cd failed"
-
+git init -q
 git remote add origin "$REPO_URL"
 git config core.sparseCheckout true
 
@@ -124,15 +118,13 @@ echo "$TARGET_DIR/*" > .git/info/sparse-checkout
 
 git pull -q origin main || error_exit "Git pull failed"
 
-# remove git metadata (keep files only)
+# remove git metadata
 rm -rf .git
-
-cd "$BASE_DIR"
 
 # ================= DONE =================
 echo "=========================================="
 echo "[✓] SUCCESS"
-echo "[✓] Installed tools: git, curl, nodejs, npm, go"
-echo "[✓] Folder ready: $BASE_DIR/$TARGET_DIR"
-echo "[✓] No temp directory used"
+echo "[✓] Folder created:"
+echo "    $BASE_DIR/$TARGET_DIR"
+echo "[✓] Structure is EXACTLY as requested"
 echo "=========================================="
