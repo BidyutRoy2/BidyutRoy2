@@ -1,16 +1,15 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"net"
-	"os"
-	"os/exec"
-	"path/filepath"
-	"sort"
-	"strings"
-	"sync"
-	"time"
+    "fmt"
+    "net"
+    "os"
+    "os/exec"
+    "path/filepath"
+    "sort"
+    "strings"
+    "sync"
+    "time"
 )
 
 var (
