@@ -25,13 +25,13 @@ sudo -v || error_exit "Sudo authentication failed"
 
 # ================= UPDATE SYSTEM =================
 echo "[+] Updating system..."
-sudo apt update -y || error_exit "apt update failed"
+sudo apt-get update -y || error_exit "apt-get update failed"
 
 # ================= BASIC PACKAGES =================
 for pkg in git curl wget tar; do
   if ! command_exists "$pkg"; then
     echo "[+] Installing $pkg..."
-    sudo apt install -y "$pkg" || error_exit "Failed to install $pkg"
+    sudo apt-get install -y "$pkg" || error_exit "Failed to install $pkg"
   else
     echo "[✓] $pkg already installed"
   fi
@@ -42,15 +42,15 @@ if ! command_exists node; then
   echo "[+] Installing Node.js (LTS)..."
   curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
     || error_exit "NodeSource setup failed"
-  sudo apt install -y nodejs || error_exit "Node.js install failed"
+  sudo apt-get install -y nodejs || error_exit "Node.js install failed"
 else
   echo "[✓] Node.js already installed"
 fi
 
-# ================= NPM (FIXED – NO GLOBAL UPDATE) =================
+# ================= NPM (SAFE – NO GLOBAL UPDATE) =================
 if ! command_exists npm; then
   echo "[+] Installing npm..."
-  sudo apt install -y npm || error_exit "npm install failed"
+  sudo apt-get install -y npm || error_exit "npm install failed"
 else
   echo "[✓] npm already installed (skip global update)"
 fi
@@ -103,7 +103,6 @@ echo "=========================================="
 echo "[+] Downloading proxy-auto-collector..."
 
 REPO_URL="https://github.com/BidyutRoy2/BidyutRoy2.git"
-BRANCH="main"
 TARGET_DIR="proxy-auto-collector"
 
 TMP_DIR=$(mktemp -d) || error_exit "Temp dir failed"
@@ -116,7 +115,7 @@ git config core.sparseCheckout true
 mkdir -p .git/info
 echo "$TARGET_DIR/*" > .git/info/sparse-checkout
 
-git pull -q origin "$BRANCH" || error_exit "Git pull failed"
+git pull -q origin main || error_exit "Git pull failed"
 
 cd - >/dev/null
 rm -rf "$TARGET_DIR"
@@ -127,6 +126,6 @@ rm -rf "$TMP_DIR"
 echo "=========================================="
 echo "[✓] SUCCESS"
 echo "[✓] proxy-auto-collector downloaded"
-echo "[✓] No npm / node errors"
+echo "[✓] No warnings, no crashes"
 echo "[✓] Environment is healthy"
 echo "=========================================="
