@@ -1,5 +1,5 @@
 ```
-git clone https://github.com/BidyutRoy2/BidyutRoy2/tree/c43b15e3d40647478f63d3dded8f05b2f20b5e88/proxy
+git clone https://github.com/BidyutRoy2/BidyutRoy2/tree/main/proxy
 ```
 ```
 cd proxy
