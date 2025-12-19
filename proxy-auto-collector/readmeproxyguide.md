@@ -8,11 +8,15 @@ cd proxy-auto-collector
 ```
 
 ```
-go mod init proxy-auto-collector ; go mod tidy ; go build -o proxy-engine ; chmod +x index.js ; npm install
+go mod init proxy-auto-collector ; go mod tidy ; go build -o proxy-engine ; chmod +x index.js ; npm install ; npm install chalk cli-progress
 ```
 
 ```
 npm start
+```
+
+```
+cd proxyresult
 ```
 
 📂 FINAL OUTPUT Folder proxyresult
