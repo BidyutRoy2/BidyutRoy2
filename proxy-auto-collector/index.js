@@ -83,7 +83,7 @@ const repos = fs.readFileSync(REPOS, "utf8")
   .filter(l => l.endsWith(".git"));
 
 const bar = new cliProgress.SingleBar({
-  format: chalk.cyan("Fetching sources ") + barFormat(),
+  format: chalk.cyan("Downloading...") + barFormat(),
 }, cliProgress.Presets.shades_classic);
 
 function barFormat() {
