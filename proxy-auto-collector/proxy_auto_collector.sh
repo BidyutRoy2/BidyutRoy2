@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# ================= SAFE MODE =================
 set -o pipefail
 
 error_exit() {
@@ -15,6 +14,16 @@ echo "[!] Logo load failed (ignored)"
 echo "-----------------------------------------------------------------------------"
 sleep 2
 
+# ================= WORK DIRECTORY =================
+BASE_DIR="$HOME/proxy_auto_collector"
+TARGET_DIR="proxy-auto-collector"
+REPO_URL="https://github.com/BidyutRoy2/BidyutRoy2.git"
+
+mkdir -p "$BASE_DIR"
+cd "$BASE_DIR" || error_exit "Cannot access $BASE_DIR"
+
+echo "[✓] Working directory: $BASE_DIR"
+
 # ================= HELPERS =================
 command_exists() {
   command -v "$1" >/dev/null 2>&1
@@ -27,7 +36,7 @@ sudo -v || error_exit "Sudo authentication failed"
 echo "[+] Updating system..."
 sudo apt-get update -y || error_exit "apt-get update failed"
 
-# ================= BASIC PACKAGES =================
+# ================= INSTALL REQUIRED TOOLS =================
 for pkg in git curl wget tar; do
   if ! command_exists "$pkg"; then
     echo "[+] Installing $pkg..."
@@ -47,12 +56,12 @@ else
   echo "[✓] Node.js already installed"
 fi
 
-# ================= NPM (SAFE – NO GLOBAL UPDATE) =================
+# ================= NPM (SAFE) =================
 if ! command_exists npm; then
   echo "[+] Installing npm..."
   sudo apt-get install -y npm || error_exit "npm install failed"
 else
-  echo "[✓] npm already installed (skip global update)"
+  echo "[✓] npm already installed"
 fi
 
 # ================= GO =================
@@ -62,10 +71,7 @@ INSTALL_GO=false
 if command_exists go; then
   GO_CURRENT=$(go version | awk '{print $3}' | sed 's/go//')
   if [ "$GO_CURRENT" != "$GO_VERSION_REQUIRED" ]; then
-    echo "[!] Go version mismatch (found $GO_CURRENT, need $GO_VERSION_REQUIRED)"
     INSTALL_GO=true
-  else
-    echo "[✓] Go $GO_VERSION_REQUIRED already installed"
   fi
 else
   INSTALL_GO=true
@@ -80,6 +86,9 @@ if [ "$INSTALL_GO" = true ]; then
   sudo tar -C /usr/local -xzf go${GO_VERSION_REQUIRED}.linux-amd64.tar.gz \
     || error_exit "Go extract failed"
   rm -f go${GO_VERSION_REQUIRED}.linux-amd64.tar.gz
+  cd "$BASE_DIR"
+else
+  echo "[✓] Go $GO_VERSION_REQUIRED already installed"
 fi
 
 # ================= GO PATH =================
@@ -99,16 +108,14 @@ npm --version
 go version
 echo "=========================================="
 
-# ================= DOWNLOAD proxy-auto-collector ONLY =================
-echo "[+] Downloading proxy-auto-collector..."
+# ================= COPY proxy-auto-collector =================
+echo "[+] Copying proxy-auto-collector folder..."
 
-REPO_URL="https://github.com/BidyutRoy2/BidyutRoy2.git"
-TARGET_DIR="proxy-auto-collector"
+rm -rf "$TARGET_DIR"
 
-TMP_DIR=$(mktemp -d) || error_exit "Temp dir failed"
-cd "$TMP_DIR" || error_exit "Temp cd failed"
+git init -q "$TARGET_DIR"
+cd "$TARGET_DIR" || error_exit "cd failed"
 
-git init -q
 git remote add origin "$REPO_URL"
 git config core.sparseCheckout true
 
@@ -117,15 +124,15 @@ echo "$TARGET_DIR/*" > .git/info/sparse-checkout
 
 git pull -q origin main || error_exit "Git pull failed"
 
-cd - >/dev/null
-rm -rf "$TARGET_DIR"
-mv "$TMP_DIR/$TARGET_DIR" ./ || error_exit "Move failed"
-rm -rf "$TMP_DIR"
+# remove git metadata (keep files only)
+rm -rf .git
+
+cd "$BASE_DIR"
 
 # ================= DONE =================
 echo "=========================================="
 echo "[✓] SUCCESS"
-echo "[✓] proxy-auto-collector downloaded"
-echo "[✓] No warnings, no crashes"
-echo "[✓] Environment is healthy"
+echo "[✓] Installed tools: git, curl, nodejs, npm, go"
+echo "[✓] Folder ready: $BASE_DIR/$TARGET_DIR"
+echo "[✓] No temp directory used"
 echo "=========================================="
