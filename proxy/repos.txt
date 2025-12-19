@@ -1,1 +1,5 @@
-
+https://github.com/TheSpeedX/PROXY-List.git
+https://github.com/proxifly/free-proxy-list/tree/main/proxies
+https://github.com/monosans/proxy-list/tree/main/proxies
+https://github.com/iplocate/free-proxy-list/tree/main/protocols
+https://github.com/Zaeem20/FREE_PROXIES_LIST.git
