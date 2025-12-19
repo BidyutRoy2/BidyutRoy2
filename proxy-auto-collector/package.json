@@ -1,0 +1,12 @@
+{
+  "name": "proxy-auto-collector",
+  "version": "1.0.0",
+  "description": "Ultra-fast proxy auto collector (Go + npm)",
+  "type": "module",
+  "bin": {
+    "proxy-auto-collector": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
