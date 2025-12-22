@@ -15,6 +15,6 @@ npm install axios chalk gradient-string figlet inquirer cli-progress winston htt
 ```
 
 ```
-node index.js
+npm start
 ```
 
