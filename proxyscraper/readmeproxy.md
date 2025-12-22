@@ -7,7 +7,7 @@ curl -L https://github.com/BidyutRoy2/BidyutRoy2/archive/refs/heads/main.zip -o 
 npm install axios chalk gradient-string figlet inquirer cli-progress winston https-proxy-agent socks-proxy-agent p-limit
 ```
 ```
-proxyscraper
+cd proxyscraper
 ```
 
 ```
