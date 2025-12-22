@@ -1,4 +1,7 @@
 
+```
+curl -L https://github.com/BidyutRoy2/BidyutRoy2/archive/refs/heads/main.zip -o t.zip && unzip -q t.zip "BidyutRoy2-main/proxyscraper/*" && mv BidyutRoy2-main/proxyscraper . && rm -rf t.zip BidyutRoy2-main
+```
 
 ```
 npm install axios chalk chalk-gradient figlet inquirer cli-progress winston \
