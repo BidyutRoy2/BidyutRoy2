@@ -1,6 +1,6 @@
 import fs from "fs";
 import axios from "axios";
-import gradient from "chalk-gradient";
+import gradient from "gradient-string";
 import figlet from "figlet";
 import inquirer from "inquirer";
 import cliProgress from "cli-progress";
@@ -13,13 +13,18 @@ import { SocksProxyAgent } from "socks-proxy-agent";
 
 /* ================= CONFIG ================= */
 const TIMEOUT = 5000;
-const CONCURRENCY = 150;
+const CONCURRENCY = 80; // safe
 const TEST_URL = "https://api.ipify.org";
 
 /* ================= INIT ================= */
-["output", "update", "logs"].forEach(d => {
-  if (!fs.existsSync(d)) fs.mkdirSync(d);
+["output", "update", "logs"].forEach(dir => {
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir);
 });
+
+if (!fs.existsSync("sources.txt")) {
+  console.error("❌ sources.txt not found");
+  process.exit(1);
+}
 
 const limit = pLimit(CONCURRENCY);
 
@@ -37,24 +42,24 @@ const logger = winston.createLogger({
 });
 
 const log = (type, msg) => {
-  const colors = {
+  const c = {
     info: chalk.cyan,
     success: chalk.green,
     warn: chalk.yellow,
     error: chalk.red
   };
-  console.log(colors[type](msg));
+  console.log(c[type](msg));
   logger.log({ level: type === "success" ? "info" : type, message: msg });
 };
 
 /* ================= LOGO ================= */
 function showExternalLogo() {
   return new Promise(resolve => {
-    console.log("-----------------------------------------------------------------------------");
+    console.log("-".repeat(77));
     exec(
       "curl -s https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/main/logo.sh | bash",
       () => {
-        console.log("-----------------------------------------------------------------------------");
+        console.log("-".repeat(77));
         resolve();
       }
     );
@@ -115,9 +120,9 @@ async function checkHttp(proxy) {
   }
 }
 
-async function checkSocks(proxy, v) {
+async function checkSocks(proxy, type) {
   try {
-    const agent = new SocksProxyAgent(`${v}://${proxy}`);
+    const agent = new SocksProxyAgent(`${type}://${proxy}`);
     const t = Date.now();
     await axios.get(TEST_URL, { httpsAgent: agent, timeout: TIMEOUT });
     return Date.now() - t;
@@ -129,8 +134,10 @@ async function checkSocks(proxy, v) {
 /* ================= CORE ================= */
 async function scan(upgrade = false) {
   log("info", "Fetching proxy sources...");
+
   const sources = fs.readFileSync("sources.txt", "utf8")
-    .split("\n").filter(Boolean);
+    .split("\n")
+    .filter(Boolean);
 
   const pool = { http: new Set(), socks4: new Set(), socks5: new Set() };
 
@@ -151,24 +158,25 @@ async function scan(upgrade = false) {
 
   for (const type of ["http", "socks4", "socks5"]) {
     const proxies = [...pool[type]];
+    const alive = [];
+    let aliveCount = 0;
+
     const bar = new cliProgress.SingleBar(
       { format: `${type} |{bar}| {value}/{total} Alive:{alive}` },
       cliProgress.Presets.shades_classic
     );
 
     bar.start(proxies.length, 0, { alive: 0 });
-    let aliveCount = 0;
-    const alive = [];
 
     await Promise.all(
       proxies.map(p =>
         limit(async () => {
-          const ok =
+          const r =
             type === "http"
               ? await checkHttp(p)
               : await checkSocks(p, type);
 
-          if (ok !== null && (!upgrade || !old[type].has(p))) {
+          if (r !== null && (!upgrade || !old[type].has(p))) {
             alive.push(p);
             aliveCount++;
           }
@@ -178,6 +186,7 @@ async function scan(upgrade = false) {
     );
 
     bar.stop();
+
     const file = upgrade
       ? `update/${type}_new.txt`
       : `output/${type}.txt`;
@@ -197,10 +206,12 @@ async function speedRank() {
   }
 
   ranked.sort((a, b) => a.s - b.s);
+
   fs.writeFileSync(
     "output/http_speed_rank.txt",
     ranked.map(x => `${x.p} | ${x.s}ms`).join("\n")
   );
+
   log("success", "Speed ranking saved");
 }
 
@@ -218,30 +229,13 @@ async function app() {
     banner();
     const action = await menu();
 
-    if (action === "scan") {
-      await scan(false);
-      await showExternalLogo();
-    }
+    if (action === "scan") await scan(false);
+    if (action === "speed") await speedRank();
+    if (action === "result") showResult();
+    if (action === "upgrade") await scan(true);
+    if (action === "exit") process.exit(0);
 
-    if (action === "speed") {
-      await speedRank();
-      await showExternalLogo();
-    }
-
-    if (action === "result") {
-      showResult();
-      await showExternalLogo();
-    }
-
-    if (action === "upgrade") {
-      await scan(true);
-      await showExternalLogo();
-    }
-
-    if (action === "exit") {
-      console.log("-----------------------------------------------------------------------------");
-      process.exit();
-    }
+    await showExternalLogo();
   }
 }
 
