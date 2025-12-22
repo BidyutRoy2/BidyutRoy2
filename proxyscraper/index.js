@@ -71,7 +71,7 @@ function banner() {
   console.clear();
   console.log(
     gradient.rainbow(
-      figlet.textSync("Proxy Scraper", { font: "Slant" })
+      figlet.textSync("HiddenGem - PS", { font: "Slant" })
     )
   );
 }
@@ -83,11 +83,11 @@ async function menu() {
       name: "action",
       message: "Select action",
       choices: [
-        { name: "🚀 Start Scanning", value: "scan" },
-        { name: "⚡ Speed Ranking", value: "speed" },
-        { name: "📊 Check Proxy Result", value: "result" },
-        { name: "♻ Upgrade New Proxy", value: "upgrade" },
-        { name: "❌ Exit", value: "exit" }
+        { name: "1/ 🚀 Start Scanning", value: "scan" },
+        { name: "2/ ⚡ Speed Ranking", value: "speed" },
+        { name: "3/ 📊 Check Proxy Result", value: "result" },
+        { name: "4/ ♻ Upgrade New Proxy", value: "upgrade" },
+        { name: "5/ ❌ Exit", value: "exit" }
       ]
     }
   ]);
