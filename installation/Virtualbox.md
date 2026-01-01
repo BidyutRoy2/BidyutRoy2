@@ -100,6 +100,17 @@ sudo bash /media/$USER/VBox_GAs_*/VBoxLinuxAdditions.run
 sudo reboot
 ```
 
+## Ultimate Stay-Awake 24 Hour Ubuntu/Kali
+
+Ubuntu
+```
+gsettings set org.gnome.desktop.session idle-delay 0; gsettings set org.gnome.desktop.screensaver lock-enabled false; gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'; gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+```
+Kali 
+```
+xfconf-query -c xfce4-screensaver -p /saver/enabled -n -t bool -s false; xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/blank-on-ac -n -t int -s 0; xset s off; xset -dpms
+```
+
 ### VirtualBox Quick Export vs Import Settings Without Install
 
 | **EXPORT**           | **IMPORT**          |
