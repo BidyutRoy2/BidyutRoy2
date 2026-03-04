@@ -39,7 +39,7 @@ echo "Check Docker Service Status:"
 sudo systemctl status docker --no-pager
 
 echo ""
-echo "======================= DOCKER Commands ======================="
+echo " ======================= DOCKER Commands ======================="
 echo "1. List Containers:      > docker ps -a"
 echo "2. Filter by Name:       > docker ps -f name=YOUR_NAME"
 echo "3. Start Docker:         > sudo systemctl enable --now docker"
