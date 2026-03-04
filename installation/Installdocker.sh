@@ -13,10 +13,14 @@ install_docker() {
     echo "Installing Docker..."
     sudo apt-get update
     sudo apt-get install -y ca-certificates curl gnupg
+    
     sudo install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    # Added --yes to handle the overwrite prompt automatically
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor --yes -o /etc/apt/keyrings/docker.gpg
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
+    
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    
     sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 }
@@ -39,14 +43,14 @@ echo "Check Docker Service Status:"
 sudo systemctl status docker --no-pager
 
 echo ""
-echo "======================= DOCKER HELP CENTER ======================="
-echo "Click to copy/run commands:"
-echo "1. List Containers:      docker ps -a"
-echo "2. Filter by Name:       docker ps -f name=YOUR_NAME"
-echo "3. Start Docker:         sudo systemctl enable --now docker"
-echo "4. Restart Docker:       sudo systemctl restart docker"
-echo "5. Check Versions:       docker --version && docker-compose --version"
-echo "6. UNINSTALL EVERYTHING: sudo apt-get purge -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras && sudo rm -rf /var/lib/docker /etc/docker /var/lib/containerd /usr/local/bin/docker-compose ~/.docker"
+echo " ======================= DOCKER Commands ======================="
+echo "Docker Status:        > sudo systemctl status docker"
+echo "List Containers:      > docker ps -a"
+echo "Filter by Name:       > docker ps -f name=YOUR_NAME"
+echo "Start Docker:         > sudo systemctl enable --now docker"
+echo "Restart Docker:       > sudo systemctl restart docker"
+echo "Check Versions:       > docker --version && docker-compose --version"
+echo "UNINSTALL EVERYTHING: > sudo apt-get purge -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras && sudo rm -rf /var/lib/docker /etc/docker /var/lib/containerd /usr/local/bin/docker-compose ~/.docker"
 echo "=================================================================="
 echo ""
 
