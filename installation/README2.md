@@ -27,12 +27,26 @@ source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/
 ```bash
 source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker.sh)
 ```
+#### ======================= DOCKER Commands =======================
+- Docker Service Status > `sudo systemctl status docker`
+- List Containers:      > `docker ps -a`
+- Filter by Name:       > `docker ps -f name=YOUR_NAME`
+- Start Docker:         > `sudo systemctl enable --now docker`
+- Restart Docker:       > `sudo systemctl restart docker`
+- Check Versions:       > `docker --version && docker-compose --version`
+- UNINSTALL EVERYTHING: > `sudo apt-get purge -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras && sudo rm -rf /var/lib/docker /etc/docker /var/lib/containerd /usr/local/bin/docker-compose ~/.docker`
+#### ==================================================================
 
 ### Upgrade Latest Version Docker & Compose
 ```bash
 source <(wget -O - https://raw.githubusercontent.com/BidyutRoy2/BidyutRoy2/refs/heads/main/installation/docker-upgrade.sh)
 ```
 ### Check Version `docker --version` & `docker-compose --version`
+
+### Uninstall & Delete Docker File
+```
+sudo apt-get purge -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras && sudo rm -rf /var/lib/docker /etc/docker /var/lib/containerd /usr/local/bin/docker-compose ~/.docker
+```
 
 ---------------------------------------------------------------------------------------------------------------------------
 
