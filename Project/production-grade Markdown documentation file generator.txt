@@ -1,0 +1,82 @@
+Tumi amake Full production-grade documentation layer baniye dao & sob gulo akta zip fil e dao
+
+
+1. Rules.md
+2. Architecture.md
+3. MASTER_LOOP.md
+4. Memory.md
+5. Tasks.md
+6. Testing.md
+7. Acceptance.md
+8. PRB.md
+9. Design.md
+10. Phases.md
+11. Contracts.md
+12. Skills.md
+13. Decisions.md
+14. Changelog.md
+
+
+                 ┌──────────────────┐
+                 │     PRB.md       │
+                 │ Vision / Scope   │
+                 └────────┬─────────┘
+                          │
+                 ┌────────▼─────────┐
+                 │ Architecture.md  │
+                 │ System Structure │
+                 └────────┬─────────┘
+                          │
+                 ┌────────▼─────────┐
+                 │    Design.md     │
+                 │ Implementation   │
+                 └────────┬─────────┘
+                          │
+           ┌──────────────┴──────────────┐
+           ▼                             ▼
+   ┌──────────────┐             ┌───────────────┐
+   │  Rules.md    │             │ Contracts.md  │
+   │ Constraints  │             │ Interfaces    │
+   └──────┬───────┘             └───────┬───────┘
+          │                             │
+          └──────────────┬──────────────┘
+                         ▼
+                  ┌──────────────┐
+                  │  Phases.md   │
+                  └──────┬───────┘
+                         ▼
+                  ┌──────────────┐
+                  │  TASKS.md    │
+                  └──────┬───────┘
+                         ▼
+                  ┌──────────────┐
+                  │MASTER_LOOP.md│
+                  └──────┬───────┘
+                         ▼
+                       AGENT
+                         │
+            ┌────────────┼────────────┐
+            ▼            ▼            ▼
+          CODE        TESTING      ACCEPTANCE
+            │            │            │
+            └────────────┼────────────┘
+                         ▼
+                       AUDIT
+                         │
+                    ┌────┴────┐
+                    ▼         ▼
+                  FAIL       PASS
+                    │         │
+                    ▼         ▼
+                   FIX      MEMORY
+                              │
+                              ▼
+                             GIT
+                              │
+                              ▼
+                         CHECKPOINT
+
+
+
+
+Akhon Tumi amake production-grade Markdown documentation file  follow kore jekeno model llm diye sommthly project full korte pari step by step master loop prompt template dibe ami agent er summery tomake dibo tumi verify korbe , ok thakle next step er master loop prompt template dibe & jodi ok na thake fix korar master loop prompt template dibe, r akta kotha agent er daily limit ba error hoye stop hoye gele ami tomake agent er last work er kichu line er ss ba text dibo again tumi amake continuation/recovery master loop prompt template dibe jate agent j line ba task a asay daily limit ba error hoyeche sekhan theke start kore new agent 
